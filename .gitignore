@@ -1,0 +1,18 @@
+# React
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+
+# .NET
+backend/**/bin/
+backend/**/obj/
+backend/**/.vs/
+
+# Visual Studio Code
+.vscode/
+
+# Logs
+*.log
+
+# Environment files
+.env

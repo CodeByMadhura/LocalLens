@@ -1,0 +1,6 @@
+@LocalLensAPI_HostAddress = http://localhost:5139
+
+GET {{LocalLensAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
