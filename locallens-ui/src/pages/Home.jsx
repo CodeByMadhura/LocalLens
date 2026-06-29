@@ -1,31 +1,84 @@
 import { Link } from "react-router-dom";
-import "./Home.css";
+
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import TravelExploreIcon from "@mui/icons-material/TravelExplore";
+import SearchIcon from "@mui/icons-material/Search";
+import LoginIcon from "@mui/icons-material/Login";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+
+import RestaurantIcon from "@mui/icons-material/Restaurant";
+import HikingIcon from "@mui/icons-material/Hiking";
+import TheaterComedyIcon from "@mui/icons-material/TheaterComedy";
+import ForestIcon from "@mui/icons-material/Forest";
+import CameraAltIcon from "@mui/icons-material/CameraAlt";
+import NightlifeIcon from "@mui/icons-material/Nightlife";
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import SpaIcon from "@mui/icons-material/Spa";
+
+import VerifiedIcon from "@mui/icons-material/Verified";
+import GroupsIcon from "@mui/icons-material/Groups";
+import MapIcon from "@mui/icons-material/Map";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 function Home() {
+  const categories = [
+    { icon: <RestaurantIcon />, name: "Food" },
+    { icon: <HikingIcon />, name: "Adventure" },
+    { icon: <TheaterComedyIcon />, name: "Culture" },
+    { icon: <ForestIcon />, name: "Nature" },
+    { icon: <CameraAltIcon />, name: "Photography" },
+    { icon: <NightlifeIcon />, name: "Nightlife" },
+    { icon: <AccountBalanceIcon />, name: "History" },
+    { icon: <SpaIcon />, name: "Wellness" },
+  ];
+
+  const destinations = [
+    { name: "Ratnagiri", text: "Coastal Beauty" },
+    { name: "Mahabaleshwar", text: "Nature Paradise" },
+    { name: "Goa", text: "Beach Vibes" },
+    { name: "Munnar", text: "Green Hills" },
+    { name: "Jaipur", text: "Royal Culture" },
+  ];
+
   return (
     <div className="home-page">
-      <nav className="navbar">
-        <div className="logo">
-          <span className="logo-icon">📍</span>
-          <span>Local<span>Lens</span></span>
-        </div>
+      <nav className="main-navbar">
+        <Link to="/" className="brand-logo">
+          <span className="brand-icon">
+            <LocationOnIcon />
+          </span>
+          <h2>
+            Local<span>Lens</span>
+          </h2>
+        </Link>
 
-        <div className="nav-links">
-          <Link to="/">Discover</Link>
+        <div className="nav-menu">
+          <Link to="/" className="active-link">
+            <TravelExploreIcon />
+            Discover
+          </Link>
           <Link to="/about">About Us</Link>
-          <Link to="/login" className="login-btn">Login</Link>
-          <Link to="/register" className="register-btn">Register</Link>
+          <Link to="/login" className="login-btn">
+            <LoginIcon />
+            Login
+          </Link>
+          <Link to="/register" className="register-btn">
+            <PersonAddIcon />
+            Register
+          </Link>
         </div>
       </nav>
 
-      <section className="hero">
+      <section className="hero-section">
         <div className="hero-overlay">
           <div className="hero-content">
-            <div className="badge">✈ Discover authentic local experiences</div>
+            <div className="hero-badge">
+              <TravelExploreIcon />
+              Discover authentic local experiences
+            </div>
 
             <h1>
-              Travel Like <br />
-              a <span>Local</span>
+              Travel Like <br />a <span>Local</span>
             </h1>
 
             <p>
@@ -34,89 +87,89 @@ function Home() {
             </p>
 
             <div className="search-box">
+              <SearchIcon className="search-icon" />
               <input placeholder="Search destinations, cities, or experiences..." />
-              <button>Explore</button>
+              <button>
+                <TravelExploreIcon />
+                Explore
+              </button>
             </div>
           </div>
         </div>
       </section>
 
-      <div className="category-section">
-        {[
-          ["🍜", "Food"],
-          ["🏃", "Adventure"],
-          ["🎭", "Culture"],
-          ["🌿", "Nature"],
-          ["📸", "Photography"],
-          ["🌙", "Nightlife"],
-          ["🏛️", "History"],
-          ["🧘", "Wellness"],
-        ].map((item, index) => (
+      <section className="category-section">
+        {categories.map((item, index) => (
           <div className="category-card" key={index}>
-            <div>{item[0]}</div>
-            <p>{item[1]}</p>
+            <div className="category-icon">{item.icon}</div>
+            <p>{item.name}</p>
           </div>
         ))}
-      </div>
+      </section>
 
       <section className="why-section">
         <h2>Why LocalLens?</h2>
 
         <div className="why-grid">
           <div className="why-card">
-            <h3>✅ Verified & Trusted</h3>
-            <p>All places are verified by admin for authenticity and quality.</p>
+            <VerifiedIcon />
+            <h3>Verified & Trusted</h3>
+            <p>All places are verified by admin before travelers can view them.</p>
           </div>
 
           <div className="why-card">
-            <h3>👥 Local Insights</h3>
-            <p>Get insider tips and hidden spot recommendations from guides.</p>
+            <GroupsIcon />
+            <h3>Local Insights</h3>
+            <p>Hidden spots are suggested by local guides and residents.</p>
           </div>
 
           <div className="why-card">
-            <h3>🗺️ Personalized Plans</h3>
-            <p>Itineraries tailored to your interests, budget, and time.</p>
+            <MapIcon />
+            <h3>Personalized Plans</h3>
+            <p>Itinerary plans are generated based on interests and budget.</p>
           </div>
 
           <div className="why-card">
-            <h3>💚 Community Driven</h3>
-            <p>Support local communities and discover offbeat experiences.</p>
+            <FavoriteIcon />
+            <h3>Community Driven</h3>
+            <p>Support local communities and discover authentic experiences.</p>
           </div>
         </div>
       </section>
 
-      <section className="destinations">
-        <h2>Popular Destinations</h2>
+      <section className="destinations-section">
+        <div className="section-heading">
+          <h2>Popular Destinations</h2>
+          <Link to="/login">View all destinations →</Link>
+        </div>
 
         <div className="destination-grid">
-          {[
-            ["Ratnagiri", "Coastal Beauty"],
-            ["Mahabaleshwar", "Nature Paradise"],
-            ["Goa", "Beach Vibes"],
-            ["Munnar", "Green Hills"],
-            ["Jaipur", "Royal Culture"],
-          ].map((item, index) => (
+          {destinations.map((item, index) => (
             <div className="destination-card" key={index}>
               <div className="destination-overlay">
-                <h3>{item[0]}</h3>
-                <p>{item[1]}</p>
+                <h3>{item.name}</h3>
+                <p>{item.text}</p>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      <footer className="footer">
+      <footer className="main-footer">
         <div>
-          <h3>📍 LocalLens</h3>
-          <p>Discover hidden gems and travel like a true local.</p>
+          <h3>
+            <LocationOnIcon /> LocalLens
+          </h3>
+          <p>
+            Discover hidden gems, embrace local culture, and travel like a true local.
+          </p>
         </div>
 
         <div>
           <h4>Quick Links</h4>
-          <p>Home</p>
-          <p>Explore</p>
-          <p>About Us</p>
+          <Link to="/">Home</Link>
+          <Link to="/about">About Us</Link>
+          <Link to="/login">Explore</Link>
         </div>
 
         <div>
@@ -128,8 +181,11 @@ function Home() {
 
         <div>
           <h4>Newsletter</h4>
-          <input placeholder="Enter your email" />
-          <button>Subscribe</button>
+          <p>Subscribe to get travel tips and updates.</p>
+          <div className="newsletter">
+            <input placeholder="Enter your email" />
+            <button>Subscribe</button>
+          </div>
         </div>
       </footer>
     </div>

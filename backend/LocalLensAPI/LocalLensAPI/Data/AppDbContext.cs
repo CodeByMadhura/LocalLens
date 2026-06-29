@@ -22,14 +22,29 @@ public class AppDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
+        
         modelBuilder.Entity<ItineraryPlace>()
             .HasOne(ip => ip.Itinerary)
             .WithMany(i => i.ItineraryPlaces)
             .HasForeignKey(ip => ip.ItineraryId);
 
+    
         modelBuilder.Entity<ItineraryPlace>()
             .HasOne(ip => ip.Spot)
             .WithMany()
             .HasForeignKey(ip => ip.SpotId);
+
+     
+        modelBuilder.Entity<Itinerary>()
+            .Property(i => i.Budget)
+            .HasPrecision(18, 2);
+
+        modelBuilder.Entity<Spot>()
+            .Property(s => s.EntryFee)
+            .HasPrecision(18, 2);
+
+        modelBuilder.Entity<Spot>()
+            .Property(s => s.EstimatedCost)
+            .HasPrecision(18, 2);
     }
 }
